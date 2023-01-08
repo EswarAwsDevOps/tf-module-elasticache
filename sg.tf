@@ -1,4 +1,4 @@
-esource "aws_security_group" "allow_elasticache" {
+resource "aws_security_group" "allow_elasticache" {
   name        = "${var.env}_allow_elasticache"
   description = "Allow ElastiCache Access"
   vpc_id      = local.vpc_id
