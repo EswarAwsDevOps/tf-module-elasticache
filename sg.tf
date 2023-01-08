@@ -1,12 +1,12 @@
-resource "aws_security_group" "allow_rabbitmq" {
-  name        = "${var.env}_allow_rabbitmq
-  description = "Allow RabbitMQ Access"
+esource "aws_security_group" "allow_elasticache" {
+  name        = "${var.env}_allow_elasticache"
+  description = "Allow ElastiCache Access"
   vpc_id      = local.vpc_id
 
   ingress {
-    description = "rabbitmq"
-    from_port   = 5672
-    to_port     = 5672
+    description = "REDIS"
+    from_port   = 6379
+    to_port     = 6379
     protocol    = "tcp"
     cidr_blocks = local.app_subnets_cidr
   }
@@ -20,6 +20,6 @@ resource "aws_security_group" "allow_rabbitmq" {
   }
 
   tags = {
-    Name = "${var.env}_allow_rabbitmq"
+    Name = "${var.env}_allow_elasticache"
   }
 }
